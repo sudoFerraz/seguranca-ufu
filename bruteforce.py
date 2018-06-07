@@ -21,8 +21,8 @@ prob6 = sys.argv[7]
 
 found = False
 
-full_word_count = 0
-full_word = []
+
+previous_words = []
 
 
 print "Procurando senha:  " + md5
@@ -37,10 +37,12 @@ while found != True:
         word = dictionary[key]
         word_list.append(word)
     full_word = ''.join(word_list)
-    guess = hashlib.md5(full_word).hexdigest()
-    if guess == md5:
-        found = True
+    if full_word not in previous_words:
+        guess = hashlib.md5(full_word).hexdigest()
+        previous_words.append(full_word)
+        if guess == md5:
+            found = True
 
 
-print full_word
+print "A senha eh:  " + full_word
 print "achou"
