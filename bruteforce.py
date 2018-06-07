@@ -42,5 +42,5 @@ while found != True:
         found = True
 
 
-print guess
+print full_word
 print "achou"
